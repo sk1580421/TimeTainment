@@ -1,13 +1,12 @@
 package com.timetainment.timetainment.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
+import jakarta.persistence.*;
+import lombok.Data;
+@Data
 @Entity
-public class User {
+@Table
+public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,6 +14,4 @@ public class User {
 
     private String name;
     private String email;
-
-    // Getters and setters
 }

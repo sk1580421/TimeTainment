@@ -7,10 +7,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -25,10 +22,22 @@ public class UserController {
 
     @PostMapping("/create-user")
     public ResponseEntity<UserOutputDTO> createUser(@RequestBody @Valid UserInputDTO userDTO) {
-        System.out.println("Inside createUser api");
         UserOutputDTO createdUser = userService.createUser(userDTO);
-        System.out.println(createdUser.toString());
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
     }
+
+    @DeleteMapping("/delete-user/{id}")
+    public ResponseEntity<Void> deleteUserById(@PathVariable Long id) {
+        userService.deleteUserById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/get-user/{id}")
+    public ResponseEntity<UserOutputDTO> getUserById(@PathVariable Long id) {
+        UserOutputDTO createdUser = userService.getUserById(id);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+    }
+
+
 }
 
