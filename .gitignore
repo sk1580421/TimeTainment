@@ -34,3 +34,5 @@ build/
 
 ### system related ###
 .DS_Store
+
+.properties

@@ -8,6 +8,7 @@ public class TimetainmentApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TimetainmentApplication.class, args);
+
 	}
 
 }
