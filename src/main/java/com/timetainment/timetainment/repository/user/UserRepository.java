@@ -1,6 +1,6 @@
-package com.timetainment.timetainment.repository;
+package com.timetainment.timetainment.repository.user;
 
-import com.timetainment.timetainment.model.User;
+import com.timetainment.timetainment.model.usermodel.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,8 +1,8 @@
-package com.timetainment.timetainment.controller;
+package com.timetainment.timetainment.controller.user;
 
-import com.timetainment.timetainment.dto.UserInputDTO;
-import com.timetainment.timetainment.dto.UserOutputDTO;
-import com.timetainment.timetainment.service.UserService;
+import com.timetainment.timetainment.dto.user.UserInputDTO;
+import com.timetainment.timetainment.dto.user.UserOutputDTO;
+import com.timetainment.timetainment.service.user.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

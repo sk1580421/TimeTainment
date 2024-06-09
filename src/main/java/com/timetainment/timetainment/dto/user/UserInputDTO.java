@@ -1,4 +1,4 @@
-package com.timetainment.timetainment.dto;
+package com.timetainment.timetainment.dto.user;
 
 
 import jakarta.validation.constraints.Email;

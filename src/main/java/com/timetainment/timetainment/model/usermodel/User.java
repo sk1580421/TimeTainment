@@ -1,6 +1,7 @@
-package com.timetainment.timetainment.model;
+package com.timetainment.timetainment.model.usermodel;
 
 
+import com.timetainment.timetainment.model.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 @Data

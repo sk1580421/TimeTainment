@@ -1,9 +1,9 @@
-package com.timetainment.timetainment.service;
+package com.timetainment.timetainment.service.user;
 
-import com.timetainment.timetainment.dto.UserInputDTO;
-import com.timetainment.timetainment.dto.UserOutputDTO;
-import com.timetainment.timetainment.model.User;
-import com.timetainment.timetainment.repository.UserRepository;
+import com.timetainment.timetainment.dto.user.UserInputDTO;
+import com.timetainment.timetainment.dto.user.UserOutputDTO;
+import com.timetainment.timetainment.model.usermodel.User;
+import com.timetainment.timetainment.repository.user.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
