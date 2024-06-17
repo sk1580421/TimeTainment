@@ -8,14 +8,15 @@ import com.timetainment.timetainment.repository.booking.BookingRepository;
 import com.timetainment.timetainment.repository.offerings.OfferingRepository;
 import com.timetainment.timetainment.repository.user.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
 @Slf4j
+@AllArgsConstructor
 @Service("cricket")  //-- name of bean of this class    // this helps to fill Map<String, BookingStrategy> bookingStrategies in booking service;
 public class CricketSessionBookingService implements BookingStrategy {
 
@@ -23,13 +24,6 @@ public class CricketSessionBookingService implements BookingStrategy {
     private final OfferingRepository offeringRepository;
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
-
-    public CricketSessionBookingService(BookingRepository bookingRepository, OfferingRepository offeringRepository, UserRepository userRepository, ModelMapper modelMapper) {
-        this.bookingRepository = bookingRepository;
-        this.offeringRepository = offeringRepository;
-        this.userRepository = userRepository;
-        this.modelMapper = modelMapper;
-    }
 
     @Override
     public BookingOutputDTO book(BookingInputDTO bookingInputDTO) {
@@ -50,7 +44,7 @@ public class CricketSessionBookingService implements BookingStrategy {
 
         Booking newBooking = new Booking();
         newBooking.setOffering(offering);
-        newBooking.setUser(userRepository.findById(bookingInputDTO.getUserId())
+        newBooking.setUsers(userRepository.findById(bookingInputDTO.getUserId())
                 .orElseThrow(() -> new EntityNotFoundException("User not found")));
         newBooking.setBookingDate(LocalDateTime.now());
         newBooking.setStatus("CONFIRMED");

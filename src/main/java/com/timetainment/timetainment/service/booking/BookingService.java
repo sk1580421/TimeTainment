@@ -7,6 +7,7 @@ import com.timetainment.timetainment.repository.booking.BookingRepository;
 import com.timetainment.timetainment.repository.offerings.OfferingRepository;
 import com.timetainment.timetainment.repository.user.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,16 +15,12 @@ import org.springframework.stereotype.Service;
 import java.util.Map;
 
 @Service
+@AllArgsConstructor
 public class BookingService {
 
     private final Map<String, BookingStrategy> bookingStrategies;
     private final OfferingRepository offeringRepository;
 
-    @Autowired
-    public BookingService(Map<String, BookingStrategy> bookingStrategies, OfferingRepository offeringRepository) {
-        this.bookingStrategies = bookingStrategies;
-        this.offeringRepository = offeringRepository;
-    }
     public BookingOutputDTO addBooking(BookingInputDTO bookingInputDTO) {
         String category = getCategoryByOfferingId(bookingInputDTO.getOfferingId());
         BookingStrategy bookingStrategy = bookingStrategies.get(category);
@@ -40,5 +37,7 @@ public class BookingService {
                 .orElseThrow(() -> new EntityNotFoundException("Offering not found with id: " + offeringId));
         return offering.getCategory();
     }
+
+
 }
 

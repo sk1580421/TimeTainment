@@ -1,14 +1,15 @@
 package com.timetainment.timetainment.model.booking;
 import com.timetainment.timetainment.model.BaseEntity;
 import com.timetainment.timetainment.model.offerings.Offering;
-import com.timetainment.timetainment.model.usermodel.User;
+import com.timetainment.timetainment.model.usermodel.Users;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
+
 import java.time.LocalDateTime;
 
 
 @Entity
-@Data
+@Getter @Setter @ToString
 public class Booking extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +21,7 @@ public class Booking extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+    private Users users;
 
     private LocalDateTime bookingDate;
     private String status;

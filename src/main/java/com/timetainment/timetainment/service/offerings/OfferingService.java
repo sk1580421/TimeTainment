@@ -5,6 +5,7 @@ import com.timetainment.timetainment.model.offerings.Offering;
 import com.timetainment.timetainment.repository.offerings.OfferingRepository;
 import com.timetainment.timetainment.repository.user.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,16 +16,11 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
+@AllArgsConstructor
 public class OfferingService {
 
     private final OfferingRepository offeringRepository;
     private final ModelMapper modelMapper;
-
-    @Autowired
-    public OfferingService(OfferingRepository offeringRepository, ModelMapper modelMapper) {
-        this.offeringRepository = offeringRepository;
-        this.modelMapper = modelMapper;
-    }
 
     public OfferingOutputDTO addService(OfferingInputDTO offeringInputDTO) {
         Offering offering = modelMapper.map(offeringInputDTO, Offering.class);

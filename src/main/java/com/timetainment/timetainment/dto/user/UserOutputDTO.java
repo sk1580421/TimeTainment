@@ -1,8 +1,6 @@
 package com.timetainment.timetainment.dto.user;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 
 @Data
@@ -13,9 +11,11 @@ public class UserOutputDTO {
 
     @NotNull
     @Size(min = 1, max = 255)
-    private String name;
-
-    @NotNull
-    @Email
+    private String username;
+    @NotBlank
+    private String role;
+    @NotBlank
     private String email;
+    @Digits(integer = Integer.BYTES, fraction = 0)
+    private int status;
 }

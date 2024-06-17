@@ -1,5 +1,7 @@
 package com.timetainment.timetainment.controller.user;
 
+import com.timetainment.timetainment.dto.user.AuthorityInputDTO;
+import com.timetainment.timetainment.dto.user.AuthorityOutputDTO;
 import com.timetainment.timetainment.dto.user.UserInputDTO;
 import com.timetainment.timetainment.dto.user.UserOutputDTO;
 import com.timetainment.timetainment.service.user.UserService;
@@ -20,16 +22,22 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/create-user")
+    @PostMapping("/register")
     public ResponseEntity<UserOutputDTO> createUser(@RequestBody @Valid UserInputDTO userDTO) {
         UserOutputDTO createdUser = userService.createUser(userDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+    }
+    @PostMapping("/create-authority")
+    public ResponseEntity<AuthorityOutputDTO> createAuthority(@RequestBody @Valid AuthorityInputDTO authorityInputDTO) {
+        AuthorityOutputDTO createdAuthority = userService.createAuthority(authorityInputDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdAuthority);
     }
 
     @DeleteMapping("/delete-user/{id}")
     public ResponseEntity<Void> deleteUserById(@PathVariable Long id) {
         userService.deleteUserById(id);
         return ResponseEntity.noContent().build();
+
     }
 
     @GetMapping("/get-user/{id}")
